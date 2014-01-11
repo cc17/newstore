@@ -1,0 +1,83 @@
+
+.result-hd{
+  border-radius:2px;
+  background: #f0f0f0;
+  line-height: 40px;
+  padding-left: 13px;
+  font-size: 16px;
+  padding: 0 10px;
+  border-bottom:1px solid #ccc;
+}
+.result-list{
+  min-height: 120px;
+  background: #fff;
+  position: relative;
+  border:1px solid #ccc;
+  border-radius:2px;
+  .no-result{
+    margin-top:40px;
+    text-align:center;
+  }
+  .item{
+   &:hover{
+      background:#fff3e2;
+      h4 a{
+        color:#333;
+      }
+      .install:not(.app-installed){
+        background:#ff9b15;
+        color:#fff;
+        padding:0 10px;
+        text-decoration:none;
+      }
+  }
+  h4{
+  font-weight:bold;
+  }
+  a{
+    color:#999999;
+  }
+    border-right: 1px dotted #ccc;
+    border-bottom: 1px dotted #ccc;
+    vertical-align: top;
+    float: left;
+    position: relative;
+    padding: 25px 10px 17px;
+    width: 186px;
+    height: 95px;
+    padding-left: 130px;
+    zoom: 1;
+    & img{
+      left: 30px;
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      overflow: hidden;
+    }
+    &.hide-border{
+      width: 187px;
+      border-right:0;
+    }
+  }
+  .desc{
+    line-height: 1.5em;
+    height: 3em;
+    overflow: hidden;
+    margin: 7px 0;
+    font-size: 12px;
+    a{
+      color: #87868e;
+    }
+  }
+  .install{
+    color:#333;
+    height: 25px;
+    line-height:25px;
+    border-radius:4px;
+    cursor: pointer;
+    font-size:12px;
+    text-decoration:underline;
+    display: inline-block;
+    margin-top:-4px;
+  }
+}

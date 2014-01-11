@@ -1,0 +1,86 @@
+<!Doctype html>
+<html xmlns=http://www.w3.org/1999/xhtml>
+<head>
+	<title>排行榜——猎豹商店</title>
+    <link rel="stylesheet" type="text/css" href="src/css/base.min.css?t=1389432474">
+	<link rel="stylesheet" type="text/css" href="src/css/top/top.min.css?t=1389432474">
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+</head>
+<body>
+    <div class="toptool">
+        <div class="toptool-in cl">
+            <div class="lb-logo fl"><img src="src/img/lb-logo.png" alt=""/></div>
+            <div class="main-nav fl">
+                <a href="index.html" >首页</a>
+                <a href="cat.html" >类别</a>
+                <a href="top.html" class="current">排行</a>
+                <a href="http://bbs.liebao.cn/thread-172148-1-1.html" target="_blank">提交应用</a>
+                
+
+            </div>
+            <div class="skin fl"><a href="http://www.liebao.cn/skin/"  title="皮肤">皮肤</a></div>
+            <form action="search.html" method="get" class="search-form" id="J-search-form">
+                <input type="text" name="keyword" class="search-key"/>
+                <input type="submit" value=""/>
+            </form>
+
+        </div>
+    </div>
+    <div class="grid-975 J-container">
+        <div class="ranks_header cl">
+            <h3 class="fl week " data-type="week">周排行</h3>
+            <h3 class="fl recent" data-type="recent">最近更新</h3>
+        </div>
+        <div class="ranks_body app_grid" id="J-ranks-body">
+            <div class="ranks_body_week cl" style="display:none;"></div>
+            <div class="ranks_body_recent cl" style="display: none"></div>
+        </div>
+    </div>
+    <div class="footer">
+        <a href="http://bbs.liebao.cn/forum-65-1.html" title="扩展讨论" target="_blank">扩展讨论</a>
+        <a href="http://bbs.liebao.cn/thread-172148-1-1.html" title="发布扩展" target="_blank">发布扩展</a>
+        <a href="https://chrome.google.com/webstore" title="Chrome Web Store" target="_blank">Chrome Web Store</a>
+        <a href="http://e.weibo.com/liebaocn" title="猎豹浏览器官方微博" target="_blank">关注猎豹</a>
+        <p>京ICP备12038800号-2 Copyright &copy; 2011-2012 金山网络  All rights reserved.</p>
+    </div>
+    <script type="text/tpl" id="J-tpl-list">
+        <%for(var i =0,len = data.length;i<len;i++){%>
+            <% var item = data[i]; %>
+            <div class="item fl cl <% if(item && item.hideBorder){ %> hide-border <% }%>">
+                <% if(item){ %>
+                    <a class="main-list-img J-show-dialog" title="<%= item.app_name %>" href="#!id=<%= item.app_uuid %>" data-uuid="<%= item.app_uuid %>">
+                        <img src="<%= item.app_icon %>" title="<%= item.app_name %>" alt="<%= item.app_name %>" />
+                    </a>
+                    <h4>
+                        <a class="text-overflow J-show-dialog" title="<%= item.app_name %>" href="###" data-uuid="<%= item.app_uuid %>"><%= item.app_name %></a>
+                    </h4>
+                    <p class="desc">
+                        <% var app_summary = item.app_summary.length > 28 ? item.app_summary.slice(0,28) + '...' : item.app_summary %>
+                        <a class="J-show-dialog" title="<%= item.app_name %>" href="###" data-uuid="<%= item.app_uuid %>"><%= app_summary %></a>
+                    </p>
+                    <% if(item.updateBrowser){ %>
+                       <a class="install" href="http://www.liebao.cn/" target="_blank">升级浏览器后可用</a>
+                    <% }else{ %>
+                         <% if(item.app_uuid && item.app_downloadURL){ %>
+                            <a data-appname="<%= item.app_name %>" data-installUUID="<% if(!item.installed){%><%= item.app_uuid%><%}%>" class="install <%= item.app_uuid %> <% if(item.installed){ %> app-installed <% }%>"
+                                href=" <% if(item.installed){ %> ### <% }else{ %>  <%= item.app_downloadURL %> <% } %> "><% if(item.installed){ %>已安装 <% }else{ %> 安装 <% } %></a>
+                        <% } %>
+                    <%}%>
+                <% } %>
+            </div>
+        <%}%>
+    </script>
+	<script type="text/javascript" src="src/js/sea-debug.min.js?t=1389432474"></script>
+    <script type="text/javascript" src="dist/js/common.min.js?t=1389432474"></script>
+	<script type="text/javascript" src="dist/js/top.min.js?t=1389432474"></script>
+	<script type="text/javascript">
+	    seajs.use("src/js/top/top",function(top){
+	    	top.start({
+                wrap:'#J-ranks-body',
+                tpl:'#J-tpl-list'
+            });
+	    });
+
+	</script>
+</body>
+</html>

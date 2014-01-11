@@ -1,0 +1,361 @@
+.iconbg(){
+  background: url(../../img/icon.png) no-repeat;
+}
+.install_hover(){
+  background:#ff9b15;
+  color:#fff;
+  padding:0 8px;
+  text-decoration:none;
+};
+.install_common(){
+  height: 28px;
+  line-height: 28px;
+  border-radius: 4px;
+  text-decoration:underline;
+  cursor: pointer;
+  display: inline-block;
+}
+.slider{
+  width:716px;
+  background:#fff;
+  height:310px;
+  .slider-list {
+    height:310px;
+  }
+  margin-bottom: 10px;
+  position: relative; overflow: hidden;
+  & li {
+    width:716px;
+    height:310px;
+    float: left;
+    img{
+      width:716px;
+      height:310px;
+    }
+  }
+  .slider-arrow-wrap{
+    width: 100%;
+  }
+  .unslider-arrow{
+    width: 21px;
+    height:52px;
+    display: block;
+    position: absolute;
+    top:50%;
+    background: url(../../img/slider-arrow.png) no-repeat 0 0;
+    margin-top: -24px;
+    z-index: 2;
+    &.next{
+      right:0;
+      background-position: -21px 0 ;
+      &:hover{
+        background-position: 0 0 ;
+      }
+    }
+    &.prev{
+      left:0;
+      background-position: -21px -48px;
+      &:hover{
+        background-position: 0 -48px ;
+      }
+    }
+  }
+
+  .dots{
+    position: absolute;
+    bottom:8px;
+    right:8px;
+    li{
+      display: inline-block;
+      width:55px;
+      height:16px;
+      margin-left: 15px;
+      background: rgba(255,255,255,0.6);
+      cursor: pointer;
+      &.active{
+        background: rgba(255,255,255,0.9);
+      }
+    }
+  }
+}
+@border-e5e5e5:1px solid #e5e5e5;
+.list-wrap{
+  width:714px;
+  position: relative;
+  
+
+}
+.list-hd{
+  height: 38px;
+  font-weight:bold;
+  border-bottom:1px solid #ccc;
+  line-height: 38px;
+  color:#ec8200;
+  padding-left: 32px;
+  .iconbg();
+  &.reco-hd{
+    background-position: 2px 1px;
+  }
+  &.onlineMust-hd{
+    background-position: 2px -41px;
+  }
+  background-color:#fff;
+}
+.main-list{
+    position: relative;
+    top:0;
+    left:0;
+    min-height: 200px;
+
+	background:#fff;
+    .reco-row{
+      width: 714px;
+      height:332px;
+    }
+	& .item{
+    color:#818181;
+    &:hover:not(.is_blank){
+      background:#fff3e2;
+      .install:not(.app-installed){
+        .install_hover();
+      }
+      h4 a{
+        color:#333;
+      }
+    }
+	  width:113px;
+	  padding:35px 14px 0 110px;
+	  height:75px;
+	  position:relative;
+	  float:left;
+	  border-right:@border-e5e5e5;
+	  border-bottom:@border-e5e5e5;
+	  a{
+	  	text-decoration:none;
+	  	font-size:12px;
+      color:#818181;
+	  }
+    h4{
+      margin:-12px 0 6px;
+      a{
+        font-size:14px;
+        font-weight:bold;
+        margin-top:-5px;
+        color:#999999;
+        width:108px;
+        
+      }
+    }
+	  .main-list-img{
+	  	position:absolute;
+	  	top:27px;
+	  	left:28px;
+	  	width:60px;
+	  	height:60px;
+	    img{
+	      width:60px;
+	      height:60px;
+	    }
+	  }
+	  .desc a{
+        width:110px;
+        line-height: 20px;
+        height: 22px;
+        color: #818181;
+	  }
+	  &.hide-border{
+	  	border-right:0;
+	  }
+	  .install{
+        .install_common();
+    		
+        &.app-installed{
+          cursor: text;
+          text-decoration:none;
+        }
+	  }
+	}
+}
+.reco-list-wrap .loading,.onlineMust-list-wrap .loading,.slider .loading{
+  left:363px;
+}
+.zt-banner{
+	height:92px;
+	margin:12px 0;
+}
+.reco{
+	width:2000px;
+}
+.rec,.online-must{
+  border:1px solid #ccc;
+  border-radius:2px;
+}
+/*左右翻页*/
+.list-pager{
+  width:60px;
+  margin-top: 4px;
+  height: 18px;
+  float: right;
+  span{
+    width:18px;
+    height:18px;
+    .iconbg();
+    display: inline-block;
+    margin-right: 8px;
+    cursor: pointer;
+    font-size:12px;
+    opacity: 1;
+    &:hover,&.disabled{
+      opacity: 0.6;
+    }
+    &.disabled{
+      cursor:default;
+    }
+    &.prev{
+      background-position: -5px -128px;
+    }
+    &.next{
+      background-position: -5px -165px;
+    }
+  }
+}
+
+/**下载排行**/
+.download{
+  margin-bottom: 16px;
+}
+.download,.newadd {
+    border:1px solid #d0d0d0;
+    border-radius:2px;
+    .updateTips{
+      height:18px;
+      position:absolute;
+      right:18px;
+      display:none;
+    }
+    background : #fff;
+    .list-hd{
+      color:#333333;
+      padding-left: 30px;
+      font-weight:bold;
+      &.download-hd,&.newadd-hd{
+        background-position: 6px -81px;
+      }
+      .newadd-count{
+        font-size: 12px;
+        font-weight: bold;
+        text-decoration: underline;
+        margin-right: 8px;
+        float: right;
+      }
+    }
+    .list-bd{
+      min-height:100px;
+    }
+	.item{
+		border-top:1px solid #e5e5e5;
+		height:45px;
+		line-height:45px;
+		position:relative;
+    padding-left: 26px;
+    font-size:12px;
+		&.first{
+			border-top:0;
+		}
+    &:hover{
+      background:#fff3e2;
+      .install{
+        .install_hover();
+        display:block;
+        padding:0 18px;
+      }
+      .updateTips{
+        display:block;
+      }
+      .app-installed{
+        background:-webkit-linear-gradient(top, #f3f3f3, #e5e5e5);
+        color:#9c9c9c;
+        padding:0 13px;
+      }
+      .app-name a{
+        color:#333;
+        font-weight:bold;
+      }
+    }
+	}
+	.app-img{
+		@w:24px;
+		@h:24px;
+		width:@w;
+		height:@h;
+        margin:8px 20px 0 0;
+		& img{
+			width:@w;
+			height:@h;
+		}
+	}
+	.app-name{
+		width:100px;
+    height:46px;
+    a{
+      width:100px;
+      color:#5b5b5b;
+    }
+	}
+	.install{
+      .install_common();
+      color:#fff;
+      background:#ff9b15;
+      &.app-installed{
+        cursor: text;
+        text-decoration:none;
+      }
+		display:none;
+		position:absolute;
+		top:8px;
+		 right:12px;
+		z-index:1;
+	}
+}
+.download {
+  .app-download-count{
+    float:right;
+    margin-right:18px;
+    color:#999999;
+  }
+  .first{
+      padding:5px 0 0 10px;
+      height:77px;
+      .app-img{
+        margin-right:8px;
+        @w:58px;
+        @h:58px;
+        width:@w;
+        height:@h;
+        & img{
+          width:@w;
+          height:@h;
+        }
+      }
+      .app-name{
+        font-size:14px;
+        font-weight:bold;
+        margin-top:-7px;
+      }
+      .desc{
+        font-size:12px;
+        color:#87868e;
+        display:inline-block;
+        line-height:17px;
+        width:150px;
+        position:absolute;
+        left:77px;
+        top:38px;
+      }
+      .app-download-count{
+        top:-3px;
+        right:1px;
+        position:absolute;
+      }
+  }
+}

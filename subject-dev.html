@@ -1,0 +1,102 @@
+<!Doctype html>
+<html xmlns=http://www.w3.org/1999/xhtml>
+<head>
+	<title>专题——猎豹商店</title>
+    <link rel="stylesheet" type="text/css" href="src/css/base.css">
+	<link rel="stylesheet" type="text/css" href="src/css/subject/subject.css">
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+</head>
+<body>
+    <div class="toptool">
+        <div class="toptool-in cl">
+            <div class="lb-logo fl"><img src="src/img/lb-logo.png" alt=""/></div>
+            <div class="main-nav fl">
+                <a href="index-dev.html" class="current">首页</a>
+                <a href="cat-dev.html" >类别</a>
+                <a href="top-dev.html">排行</a>
+                <a href="http://bbs.liebao.cn/thread-172148-1-1.html" target="_blank">提交应用</a>
+               
+
+            </div>
+            <div class="skin fl"><a href="http://www.liebao.cn/skin/"  title="皮肤">皮肤</a></div>
+            <form action="search-dev.html" method="get" class="search-form" id="J-search-form">
+                <input type="text" name="keyword" class="search-key"/>
+                <input type="submit" value=""/>
+            </form>
+
+        </div>
+    </div>
+    <div class="top-banner"></div>
+    <!--list-->
+    <div id="J-container">
+
+    </div>
+    <div class="footer">
+        <a href="http://bbs.liebao.cn/forum-65-1.html" title="扩展讨论" target="_blank">扩展讨论</a>
+        <a href="http://bbs.liebao.cn/thread-172148-1-1.html" title="发布扩展" target="_blank">发布扩展</a>
+        <a href="https://chrome.google.com/webstore" title="Chrome Web Store" target="_blank">Chrome Web Store</a>
+        <a href="http://e.weibo.com/liebaocn" title="猎豹浏览器官方微博" target="_blank">关注猎豹</a>
+        <p>京ICP备12038800号-2 Copyright &copy; 2011-2012 金山网络  All rights reserved.</p>
+    </div>
+    <script type="text/tpl" id="J-tpl-list">
+        <div class="zt-list <% if(odd){%> odd-row <%}%>  cl">
+            <div class="grid-980 zt-list-hd">
+                <h3>
+                    <%= name %>
+                    <div class="list-pager" id="J-reco-arrow" style="display:none;">
+                        <span class="prev disabled" data-action="prev"></span>
+                        <span class="next " data-action="next"></span>
+                    </div>
+                </h3>
+            </div>
+            <div class="grid-980 zt-list-wrap">
+                <div class="zt-list-bd cl">
+                    <%for(var i =0,len = data.length;i<len;i++){%>
+                        <% var item = data[i]; %>
+                        <% if( i % 4 == 0 ){%> <div class="list-row"> <% } %>
+                            <div class="item fl cl>">
+                                <% if(item){ %>
+                                    <a class="img J-show-dialog" title="<%= item.app_name %>" href="###" data-uuid="<%= item.app_uuid %>">
+                                        <img src="<%= item.app_icon %>" title="<%= item.app_name %>" alt="<%= item.app_name %>" />
+                                    </a>
+                                    <h4>
+                                        <a class="J-show-dialog" title="<%= item.app_name %>" href="###" data-uuid="<%= item.app_uuid %>">
+                                            <%= item.app_name %>
+                                        </a>
+                                    </h4>
+                                    <p class="desc">
+                                        <a class="J-show-dialog" title="<%= item.app_name %>" href="###" data-uuid="<%= item.app_uuid %>">
+                                            <%= item.app_summary %>
+                                        </a>
+                                    </p>
+                                    <% if(item.updateBrowser){ %>
+                                        <a class="install" href="http://www.liebao.cn/" target="_blank">升级浏览器后可用</a>
+                                    <% }else{%>
+                                         <% if(item.app_uuid && item.app_downloadURL){ %>
+                                            <a data-appname="<%= item.app_name %>" data-installUUID="<% if(!item.installed){%><%= item.app_uuid%><%}%>" class="install <%= item.app_uuid %> <% if(item.installed){ %> app-installed <% }%>"
+                                                href=" <% if(item.installed){ %> ### <% }else{ %>  <%= item.app_downloadURL %> <% } %> "><% if(item.installed){ %>已安装 <% }else{ %> 安装 <% } %></a>
+                                        <% } %>
+                                    <%}%>
+                                <% } %>
+                            </div>
+                        <% if( (i+1) % 4 == 0 ){%> </div><% } %>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+    </script>
+	<script type="text/javascript" src="src/js/sea-debug.js"></script>
+    <script type="text/javascript" src="dist/js/common.js"></script>
+	<script type="text/javascript" src="dist/js/subject.js"></script>
+	<script type="text/javascript">
+	    seajs.use("src/js/subject/subject",function(top){
+	    	top.init({
+                wrap:$('#J-container'),
+                tpl:$('#J-tpl-list').html()
+            });
+
+	    });
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+seajs.config({  
+    base: ".", // set base to seajs_test/static  
+    alias: {"index": "dist/index"}  
+})  
